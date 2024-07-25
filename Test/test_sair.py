@@ -1,4 +1,4 @@
-from Source.Agenda import Agenda
+from NeverMind.Source.Agenda import Agenda
 
 def test_sair():
     agenda = Agenda()
