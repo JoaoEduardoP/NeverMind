@@ -1,6 +1,7 @@
 import pytest
 from io import StringIO
-from NeverMind.Source.Agenda import Agenda
+
+from Source.Agenda import Agenda
 
 def test_mostrar_sem_evento(capsys):
     agenda = Agenda()
