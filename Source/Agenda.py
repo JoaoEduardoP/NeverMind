@@ -19,13 +19,17 @@ class Agenda:
             erro = 1
 
         if erro == 0:
-            self.eventos.append({
-            'nome': nome,
-            'inicio': inicio_dt,
-            'fim': fim_dt
-            })
-            self.qtd_eventos += 1
-            print("Evento adicionado com sucesso.")   
+            if inicio_dt >= fim_dt:
+                    print("A hora de inicio deve ser anterior a hora de termino.")
+                    erro = 1
+            else:
+                self.eventos.append({
+                'nome': nome,
+                'inicio': inicio_dt,
+                'fim': fim_dt
+                })
+                self.qtd_eventos += 1
+                print("Evento adicionado com sucesso.")   
     
     def get_Eventos(self):
         if self.qtd_eventos >= 1:

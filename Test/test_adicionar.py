@@ -20,3 +20,9 @@ def test_add_Eventos_data_invalida(agenda,capsys):
     out, _ = capsys.readouterr()
     assert out.strip() == "Formato de data e hora invalido. Use 'YYYY-MM-DD HH:MM'."
     assert len(agenda.eventos) == 0
+
+def test_add_Eventos_hora_inicio_maior_que_fim(agenda,capsys):
+    agenda.add_Eventos("Final dos 100m", "2024-07-24 12:00", "2024-07-24 11:00")
+    out, _ = capsys.readouterr()
+    assert out.strip() == "A hora de inicio deve ser anterior a hora de termino."
+    assert len(agenda.eventos) == 0
