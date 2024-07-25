@@ -26,8 +26,13 @@ def test_add_Eventos_hora_inicio_maior_que_fim(agenda,capsys):
     out, _ = capsys.readouterr()
     assert out.strip() == "A hora de inicio deve ser anterior a hora de termino."
     assert len(agenda.eventos) == 0
-    
+
 def test_add_Eventos_conflito(agenda):
     agenda.add_Eventos("Final dos 100m", "2024-07-24 10:00", "2024-07-24 11:00")
     agenda.add_Eventos("Final dos 200m", "2024-07-24 10:30", "2024-07-24 11:30")
     assert len(agenda.eventos) == 1
+
+def test_add_Eventos_sem_conflito(agenda):
+    agenda.add_Eventos("Final dos 100m", "2024-07-24 10:00", "2024-07-24 11:00")
+    agenda.add_Eventos("Final dos 200m", "2024-07-24 11:30", "2024-07-24 12:30")
+    assert len(agenda.eventos) == 2
