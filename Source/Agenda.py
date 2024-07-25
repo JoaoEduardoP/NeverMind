@@ -19,17 +19,23 @@ class Agenda:
             erro = 1
 
         if erro == 0:
-            if inicio_dt >= fim_dt:
-                    print("A hora de inicio deve ser anterior a hora de termino.")
+            for evento in self.eventos:
+                if not (fim_dt <= evento['inicio'] or inicio_dt >= evento['fim']):
+                    print("Conflito de agendamento detectado.")
                     erro = 1
-            else:
-                self.eventos.append({
-                'nome': nome,
-                'inicio': inicio_dt,
-                'fim': fim_dt
-                })
-                self.qtd_eventos += 1
-                print("Evento adicionado com sucesso.")   
+                    break
+            if erro == 0:
+                if inicio_dt >= fim_dt:
+                        print("A hora de inicio deve ser anterior a hora de termino.")
+                        erro = 1
+                else:
+                    self.eventos.append({
+                    'nome': nome,
+                    'inicio': inicio_dt,
+                    'fim': fim_dt
+                    })
+                    self.qtd_eventos += 1
+                    print("Evento adicionado com sucesso.")   
     
     def get_Eventos(self):
         if self.qtd_eventos >= 1:
