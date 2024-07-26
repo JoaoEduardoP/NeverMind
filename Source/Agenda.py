@@ -4,6 +4,7 @@ class Agenda:
     def __init__(self):
         self.qtd_eventos = 0
         self.eventos = []
+        self.running = True
         pass
     
     def add_Eventos(self, nome, inicio, fim):
@@ -63,4 +64,4 @@ class Agenda:
 
     
     def sair(self):
-        return 0
+        self.running = False
