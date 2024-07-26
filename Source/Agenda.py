@@ -38,10 +38,8 @@ class Agenda:
                     print("Evento adicionado com sucesso.")   
     
     def get_Eventos(self):
-        if self.qtd_eventos >= 1:
-            print('Final dos 100m: 2024-07-24 10:00 a 2024-07-24 11:00\n')
-        else:
-            print('Nenhum evento agendado.')
+        print("Nenhum evento agendado.")
+        return
     
     def sair(self):
         return 0
