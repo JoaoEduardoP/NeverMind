@@ -47,6 +47,16 @@ class Agenda:
 
         return
 
+    def remove_Evento(self, nome):
+        try:
+            self.eventos.remove(next(evento for evento in self.eventos if evento['nome'] == nome))
+            print("Evento removido com sucesso.")
+        except ValueError:
+            print(f"Evento '{nome}' não encontrado na lista.")
+            return
+
+        return
+
     
     def sair(self):
         return 0
