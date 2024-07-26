@@ -13,3 +13,9 @@ def test_remover_Evento_existente(agenda, capsys):
     out, _ = capsys.readouterr()
     assert len(agenda.eventos) == 0
     assert out.strip() == "Evento removido com sucesso."
+
+def test_remover_Evento_sem_ter_Eventos(agenda, capsys):
+    agenda.remove_Evento("Final dos 100m")
+    out, _ = capsys.readouterr()
+    assert len(agenda.eventos) == 0
+    assert out.strip() == "Não existem eventos cadastrados"

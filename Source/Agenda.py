@@ -48,6 +48,10 @@ class Agenda:
         return
 
     def remove_Evento(self, nome):
+        if len(self.eventos) <= 0:
+            print("Não existem eventos cadastrados")
+            return
+        
         try:
             self.eventos.remove(next(evento for evento in self.eventos if evento['nome'] == nome))
             print("Evento removido com sucesso.")
