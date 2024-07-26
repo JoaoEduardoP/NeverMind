@@ -19,3 +19,12 @@ def test_remover_Evento_sem_ter_Eventos(agenda, capsys):
     out, _ = capsys.readouterr()
     assert len(agenda.eventos) == 0
     assert out.strip() == "Não existem eventos cadastrados"
+
+def test_remover_Evento_que_nao_existe(agenda, capsys):
+    agenda.add_Eventos("Final dos 100m", "2024-07-24 10:00", "2024-07-24 11:00")
+    out, _ = capsys.readouterr()
+    qtd = len(agenda.eventos)
+    agenda.remove_Evento("Evento")
+    out, _ = capsys.readouterr()
+    assert len(agenda.eventos) == qtd
+    assert out.strip() == "Não existem evento com esse nome"
