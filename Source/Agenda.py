@@ -38,10 +38,29 @@ class Agenda:
                     print("Evento adicionado com sucesso.")   
     
     def get_Eventos(self):
-        if self.qtd_eventos >= 1:
-            print('Final dos 100m: 2024-07-24 10:00 a 2024-07-24 11:00\n')
+        formato = "%Y-%m-%d %H:%M"
+        if len(self.eventos) >= 1:
+            for evento in self.eventos:
+                print(f"{evento['nome']}: {evento['inicio'].strftime(formato)} a {evento['fim'].strftime(formato)}")
         else:
-            print('Nenhum evento agendado.')
+            print("Nenhum evento agendado.")
+
+        return
+
+    def remove_Evento(self, nome):
+        if len(self.eventos) <= 0:
+            print("Não existem eventos cadastrados")
+            return
+        
+        try:
+            self.eventos.remove(next(evento for evento in self.eventos if evento['nome'] == nome))
+            print("Evento removido com sucesso.")
+        except StopIteration:
+            print("Não existem evento com esse nome")
+            return
+
+        return
+
     
     def sair(self):
         return 0
